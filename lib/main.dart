@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
+
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -31,19 +32,22 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
-  int randNum = 1;
+  final _random = Random();
+  int _randNum = 1;
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextButton(
-            onPressed: () {
-              setState(() {
-                randNum = Random.secure().nextInt(5) + 1;
-              });
-            },
-            child: Image.asset('images/ball$randNum.png')),
+          onPressed: () {
+            setState(() {
+              _randNum = _random.nextInt(5) + 1;
+            });
+          },
+          child: Image.asset('images/ball$_randNum.png'),
+        ),
       ),
     );
   }
